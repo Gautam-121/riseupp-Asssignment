@@ -1,5 +1,7 @@
 import "./body.css"
 import Logo from "../../assets/app_logo.png"
+import Filter from "../Filter"
+import ImageCart from "../ImageCart"
 
 const Body = ()=>{
     return(
@@ -21,8 +23,8 @@ const Body = ()=>{
                 <button className="search_btn cur-poi">Search</button>
                 </div>
             </div>
-            <h3>Filter</h3>
-            <h3>Cart</h3>
+            <Filter/>
+            <ImageCart/>
         </div>
     )
 }

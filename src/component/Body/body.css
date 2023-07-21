@@ -1,7 +1,7 @@
 .app_layout_wrapper{
     max-width: 1200px;
     margin: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     box-sizing: border-box;
 }
 
