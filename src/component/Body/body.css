@@ -1,0 +1,43 @@
+.app_layout_wrapper{
+    max-width: 1200px;
+    margin: auto;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.logo_wrapper{
+    display: flex;
+}
+.main_logo{
+    margin: auto;
+    width: 120px;
+}
+
+.search_container{
+    display: flex;
+    margin-top: -20px;
+}
+
+.search_btn_wrapper{
+    margin: auto;
+}
+
+.search_input{
+    border-right: antiquewhite;
+    width: 400px;
+    font-size:20px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding: 5px;
+    margin-left: 10px;
+    padding-left: 15px;
+    outline: none;
+}
+
+.search_btn{
+    font-size: 20px;
+    padding: 5px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgba(220, 213, 213, 0.475);
+}
