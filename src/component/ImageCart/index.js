@@ -1,98 +1,44 @@
-import React, { useEffect } from "react"
-import "./imageCart.css"
+import "./imageCart.css";
+import Shimmer from "../Shimmer";
+import NotFound from "../NotFound";
+import ShowImageDetail from "../ShowImageDetail.js";
+import { useState } from "react";
 
-const ImageCart = ()=>{
+const ImageCart = ({ images, searchImage }) => {
 
-    useEffect(()=>{
-        fetchData()
-    },[])
+  const [showDetail , setShowDetail] = useState(false)
 
-    async function fetchData(){
+  const handleMouseOver = (imgData)=>{
+    console.log(imgData)
+    setShowDetail(true)
+  }
 
-    }
+  const handleMouseOut = ()=>{
+    setShowDetail(false)
+  }
 
-    return(
-        <div className = "Imagecart_container">
-            <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image cur-poi" 
-                />
-                <span>jIqYSUwqXzTJAVRtK-25YqD1otT6L-e3Xt0spwhgm2o</span>
-            </div>
-            <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div>
-            <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div>
-            <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div>
-            <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div> <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div> <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div> <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div> <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div> <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div> <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div> <div className = "Imagecart_wrapper">
-                <img 
-                src="https://i.pinimg.com/originals/61/b3/45/61b345980671c05ddc87169a1d4874bd.jpg" 
-                alt="This is img"
-                className = "cart_image" 
-                />
-            </div>
+  if(images === null) return <Shimmer/>
+
+  return images.length === 0 ? <NotFound/> : (
+    <>
+    <div className="image-serch">
+     {searchImage}
+    </div>
+    <div className="Imagecart_container">
+      {images.map((imgData) => (
+        <div className="Imagecart_wrapper" key={imgData.id}>
+          <img
+            src={imgData?.urls?.regular}
+            alt="This is img"
+            className="cart_image cur-poi"
+            onMouseOver={()=>handleMouseOver(imgData)}
+            onMouseOut={handleMouseOut}
+          />
         </div>
-    )
-}
+      ))}
+    </div>
+    </>
+  );
+};
 
-export default ImageCart
+export default ImageCart;
