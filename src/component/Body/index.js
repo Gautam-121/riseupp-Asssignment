@@ -49,7 +49,13 @@ const Body = ()=>{
                 </div>
             </div>
             <Filter fetchData = {fetchData}/>
-            <ImageCart images = {images} searchImage = {searchImage}/>
+            {
+                images === null || images.length === 0 ? 
+                <ImageCart images = {images} searchImage = {searchImage} /> :
+                images.map((imagesItem)=>(
+                    <ImageCart images = {imagesItem} searchImage = {searchImage} key={imagesItem.id}/>
+                ))
+            }
         </div>
     )
 }

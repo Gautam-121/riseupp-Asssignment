@@ -1,15 +1,14 @@
 import "./imageCart.css";
 import Shimmer from "../Shimmer";
 import NotFound from "../NotFound";
-import ShowImageDetail from "../ShowImageDetail.js";
+// import ShowImageDetail from "../ShowImageDetail.js";
 import { useState } from "react";
 
 const ImageCart = ({ images, searchImage }) => {
 
   const [showDetail , setShowDetail] = useState(false)
 
-  const handleMouseOver = (imgData)=>{
-    console.log(imgData)
+  const handleMouseOver = ()=>{
     setShowDetail(true)
   }
 
@@ -24,18 +23,19 @@ const ImageCart = ({ images, searchImage }) => {
     <div className="image-serch">
      {searchImage}
     </div>
-    <div className="Imagecart_container">
-      {images.map((imgData) => (
-        <div className="Imagecart_wrapper" key={imgData.id}>
+    <div className="imagecart_container">
+        <div className="imagecart_wrapper">
           <img
-            src={imgData?.urls?.regular}
+            src={images?.urls?.regular}
             alt="This is img"
             className="cart_image cur-poi"
-            onMouseOver={()=>handleMouseOver(imgData)}
+            onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
           />
+          {showDetail && (
+            <div>Its Visible</div>
+          )}
         </div>
-      ))}
     </div>
     </>
   );
