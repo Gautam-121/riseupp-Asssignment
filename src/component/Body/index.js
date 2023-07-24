@@ -3,28 +3,42 @@ import "./body.css"
 import Logo from "../../assets/app_logo.png"
 import Filter from "../Filter"
 import ImageCart from "../ImageCart"
-import axios from "axios"
+import Shimmer from "../Shimmer"
+import NotFound from "../NotFound"
 
 const Body = ()=>{
 
     const [images , setImages] = useState(null)
     const [searchText , setSearchText] = useState("")
+    const [searchImage , setSearchImage] = useState("")
+    const [showShimmer , setShowShimmer] = useState(true)
 
     useEffect(()=>{
         fetchData("animal")
     },[])
 
-    let [searchImage , setSearchImage] = useState("")
+    useEffect(()=>{
+        const timer = setTimeout(()=>{
+          setShowShimmer(false)
+        },1000)
+    
+        return ()=> clearInterval(timer)
+      },[])
+    
+
 
     async function fetchData(img) {
 
         if(img.length > 0)
         {
-            const response = await axios.get(`https://api.unsplash.com/search/photos?page=1&per_page=15&query=${img}&&client_id=jIqYSUwqXzTJAVRtK-25YqD1otT6L-e3Xt0spwhgm2o`)
-            setImages(response?.data?.results)
+            const data = await fetch(`https://api.unsplash.com/search/photos?page=1&per_page=15&query=${img}&&client_id=jIqYSUwqXzTJAVRtK-25YqD1otT6L-e3Xt0spwhgm2o`)
+            const response = await data.json()
+            console.log(response)
+            setImages(response?.results)
             setSearchImage(img)   
         }
     }
+
 
     return(
         <div className="app_layout_wrapper">
@@ -49,12 +63,13 @@ const Body = ()=>{
                 </div>
             </div>
             <Filter fetchData = {fetchData}/>
+            <div className="image-serch">
+              {searchImage}
+            </div>
             {
-                images === null || images.length === 0 ? 
-                <ImageCart images = {images} searchImage = {searchImage} /> :
-                images.map((imagesItem)=>(
-                    <ImageCart images = {imagesItem} searchImage = {searchImage} key={imagesItem.id}/>
-                ))
+                images === null || showShimmer ? 
+                <Shimmer/> :
+                images.length === 0 ? <NotFound/> : <ImageCart images = {images} />
             }
         </div>
     )

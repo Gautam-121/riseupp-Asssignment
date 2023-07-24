@@ -1,6 +1,8 @@
+import "./notFound.css"
+
 const NotFound = ()=>{
     return(
-        <h1>No Search Found</h1>
+        <h1 className="not_found">No Search Found</h1>
     )
 }
 

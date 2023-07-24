@@ -1,0 +1,35 @@
+/* ImagePopup.css */
+.image-container {
+    position: absolute;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .image-popup {
+    position: relative;
+    top: -10%;
+    left: 40%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    display: none;
+    width: 200px; /* Customize the width as needed */
+  }
+  
+  .image-popup.show {
+    display:block;
+  }
+  
+  /* Additional styles for the popup details */
+  .image-popup p {
+    margin: 5px 0;
+  }
+  
+  .image-popup p:first-child {
+    font-weight: bold;
+  }
