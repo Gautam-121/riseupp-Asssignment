@@ -4,7 +4,7 @@ import "./style/common.css"
 const App = ()=>{
   return(
     <>
-    <Body/>
+     <Body/>
     </>
   )
 }

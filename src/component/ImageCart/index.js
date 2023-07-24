@@ -18,11 +18,11 @@ const ImageCart = ({ images }) => {
 
 
   return (
-    <>
+  <>
     <div className="imagecart_container">
-           {
-            images.map((img , index)=>(
-              <div className="imagecart_wrapper" key={img.id}>
+        {
+          images.map((img , index) => (
+          <div className="imagecart_wrapper" key={img.id}>
               <img
               src={img?.urls?.regular}
               alt="This is img"
@@ -32,10 +32,10 @@ const ImageCart = ({ images }) => {
             />
             {showDetail && (index === position)  && <ShowImageDetail data = {img}/> }
           </div>
-            ))
-           }
+          ))
+        }
     </div>
-    </>
+  </>
   );
 };
 
